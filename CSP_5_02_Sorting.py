@@ -5,13 +5,16 @@ def bubbleSort(items: list):
     comparisons = 0
     n = len(items)
 
-    for i in range(n - 1):
+    for _ in range(n):
+        swapped = False
         for j in range(n - 1):
             comparisons += 1
             if items[j] > items[j + 1]:
                 items[j], items[j + 1] = items[j + 1], items[j]
                 swaps += 1
-                comparisons += 1
+                swapped = True
+        if not swapped:
+            break
 
     return items, swaps, comparisons
 
