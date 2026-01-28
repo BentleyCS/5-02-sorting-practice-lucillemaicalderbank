@@ -6,8 +6,8 @@ def bubbleSort(items: list):
     comparisons = 0
     n = len(items)
 
-    for i in range(n - 1):
-        for j in range(n - i - 1):
+    for i in range(n):
+        for j in range(n - 1):
             comparisons += 1
             if items[j] > items[j + 1]:
                 items[j], items[j + 1] = items[j + 1], items[j]
@@ -31,7 +31,7 @@ def insertionSort(items: list):
             j -= 1
 
         if j >= 0:
-            comparisons += 1  # counts the failed comparison
+            comparisons += 1
 
         items[j + 1] = key
 
@@ -50,22 +50,7 @@ def selectionSort(items: list):
             if items[j] < items[min_idx]:
                 min_idx = j
 
-        if min_idx != i:
-            items[i], items[min_idx] = items[min_idx], items[i]
-            swaps += 1
+        items[i], items[min_idx] = items[min_idx], items[i]
+        swaps += 1
 
     return items, swaps, comparisons
-
-
-# ----- TESTING -----
-y = [9, 8, 7, 6, 5, 4, 3, 2, 1]
-print(bubbleSort(y.copy()))
-print(insertionSort(y.copy()))
-print(selectionSort(y.copy()))
-print()
-
-x = [x for x in range(50)]
-random.shuffle(x)
-print(bubbleSort(x.copy()))
-print(insertionSort(x.copy()))
-print(selectionSort(x.copy()))
